@@ -18,11 +18,11 @@ namespace WindowManager
 
 
         private:
+            EmptyReturn SetUPWindow();
             EmptyReturn SetUPHints(); // default hints
-            
-            std::string _windowName;
             WindowHeight _windowHeight;
             WindowWidth _windowWidth;
+            std::string _windowName;
             GLFWwindow* _window;
     };
 }
