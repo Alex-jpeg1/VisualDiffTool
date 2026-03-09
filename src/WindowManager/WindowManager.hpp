@@ -16,7 +16,8 @@ namespace WindowManager
             WindowUtils(WindowHeight, WindowWidth, const std::string&, GLFWmonitor* = NULL, GLFWwindow* = NULL);
             ~WindowUtils();
 
-
+            EmptyReturn ColorWindowGray();
+            bool WindowActive(){return !glfwWindowShouldClose(_window);}
         private:
             EmptyReturn SetUPWindow();
             EmptyReturn SetUPHints(); // default hints

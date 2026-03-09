@@ -48,4 +48,19 @@ target_link_libraries(WindowManager
         OpenGL::GL            
     )
 
-target_link_libraries(VisualDiffTool PRIVATE WindowManager)
+add_library(WindowApp)
+
+target_sources(WindowApp
+    PRIVATE 
+        src/WindowApp/WindowApp.cpp
+    PUBLIC 
+        FILE_SET HEADERS
+        BASE_DIRS
+            src/WindowApp
+        FILES
+            src/WindowApp/WindowApp.hpp
+    )
+
+target_link_libraries(WindowApp PRIVATE WindowManager)
+
+target_link_libraries(VisualDiffTool PRIVATE WindowApp)

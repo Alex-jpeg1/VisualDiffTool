@@ -47,3 +47,21 @@ EmptyReturn WindowManager::WindowUtils::SetUPWindow()
     }
     glViewport( 0, 0, _windowWidth, _windowHeight);
 }
+
+EmptyReturn WindowManager::WindowUtils::ColorWindowGray()
+{
+    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glfwSwapBuffers(_window);
+
+    glfwPollEvents();
+}
+WindowManager::WindowUtils::~WindowUtils()
+{
+    if(_window)
+    {
+        glfwDestroyWindow(_window);
+    }
+    glfwTerminate();
+}
