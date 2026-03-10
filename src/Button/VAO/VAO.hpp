@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../../extern/glad/glad.h"
-#include "../../Button/VBO/VBO.hpp"
+#include "../VBO/VBO.hpp"
 
 class VAO
 {

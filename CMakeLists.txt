@@ -61,6 +61,38 @@ target_sources(WindowApp
             src/WindowApp/WindowApp.hpp
     )
 
-target_link_libraries(WindowApp PRIVATE WindowManager)
+add_library(GPUMemoryManager)
+
+target_sources(GPUMemoryManager
+    PRIVATE
+        src/Button/EBO/EBO.cpp
+        src/Button/VBO/VBO.cpp
+        src/Button/VAO/VAO.cpp
+    PUBLIC
+        FILE_SET HEADERS
+        BASE_DIRS  
+            src/Button
+        FILES
+            src/Button/EBO/EBO.hpp
+            src/Button/VBO/VBO.hpp
+            src/Button/VAO/VAO.hpp
+)
+
+add_library(Buttons)
+
+target_sources(Buttons
+        PRIVATE
+            src/Button/Button.cpp
+        PUBLIC
+            FILE_SET HEADERS
+            BASE_DIRS
+                src/Button
+            FILES
+                src/Button/Button.hpp
+)
+
+target_link_libraries(Buttons PRIVATE GPUMemoryManager)
+
+target_link_libraries(WindowApp PRIVATE WindowManager Buttons)
 
 target_link_libraries(VisualDiffTool PRIVATE WindowApp)
