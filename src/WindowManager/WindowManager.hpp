@@ -1,5 +1,4 @@
 #pragma once
-#include "../../extern/glad/glad.h"
 #include <GL/gl.h>
 #include <GLFW/glfw3.h>
 #include <string>
