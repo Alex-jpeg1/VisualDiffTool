@@ -27,6 +27,20 @@ target_sources(Glad
 )       
 target_link_libraries(Glad PRIVATE OpenGL::GL)
 
+add_library(ShaderManager)
+
+target_sources(ShaderManager
+    PRIVATE 
+        src/WindowManager/Shaders/Shaders.cpp
+    PUBLIC
+        FILE_SET HEADERS
+
+        BASE_DIRS
+            src/WindowManager
+        FILES 
+            src/WindowManager/Shaders/Shaders.hpp
+)
+
 add_library(WindowManager)
 
 target_sources(WindowManager
@@ -45,7 +59,8 @@ target_link_libraries(WindowManager
     PRIVATE
         Glad
         glfw
-        OpenGL::GL            
+        OpenGL::GL
+        ShaderManager            
     )
 
 add_library(WindowApp)
@@ -78,6 +93,20 @@ target_sources(GPUMemoryManager
             src/Button/VAO/VAO.hpp
 )
 
+add_library(Vect2DUtils)
+
+target_sources(Vect2DUtils
+    PRIVATE
+        src/Button/Vect2D/Vect2D.cpp
+    PUBLIC
+        FILE_SET HEADERS
+
+        BASE_DIRS
+            src/Button
+        FILES 
+            src/Button/Vect2D/Vect2D.hpp
+)
+
 add_library(Buttons)
 
 target_sources(Buttons
@@ -91,7 +120,7 @@ target_sources(Buttons
                 src/Button/Button.hpp
 )
 
-target_link_libraries(Buttons PRIVATE GPUMemoryManager)
+target_link_libraries(Buttons PRIVATE GPUMemoryManager Vect2DUtils)
 
 target_link_libraries(WindowApp PRIVATE WindowManager Buttons)
 

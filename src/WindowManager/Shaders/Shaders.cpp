@@ -79,3 +79,8 @@ int Shaders::ShadersUtils::UploadMatrix(std::string MatrixName)
     
     return ID;
 }
+
+Shaders::ShadersUtils::~ShadersUtils()
+{
+    Delete();
+}

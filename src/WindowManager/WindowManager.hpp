@@ -1,7 +1,7 @@
 #pragma once
+#include "Shaders/Shaders.hpp"
 #include <GL/gl.h>
 #include <GLFW/glfw3.h>
-#include <string>
 
 using WindowHeight = int;
 using WindowWidth = int;
@@ -20,9 +20,12 @@ namespace WindowManager
         private:
             EmptyReturn SetUPWindow();
             EmptyReturn SetUPHints(); // default hints
+            EmptyReturn ActivateShader();
+
             WindowHeight _windowHeight;
             WindowWidth _windowWidth;
-            std::string _windowName;
             GLFWwindow* _window;
+            std::string _windowName;
+            Shaders::ShadersUtils _shader;
     };
 }

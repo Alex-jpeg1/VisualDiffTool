@@ -10,7 +10,8 @@ WindowManager::WindowUtils::WindowUtils(WindowHeight windowHeight,
                                         GLFWwindow* share)
                                         :_windowHeight{windowHeight},
                                          _windowWidth{windowWidth},
-                                         _windowName{windowName}
+                                         _windowName{windowName},
+                                         _shader{}
 {
     glfwInit();
     SetUPHints();
@@ -23,7 +24,8 @@ WindowManager::WindowUtils::WindowUtils(WindowHeight windowHeight,
     }
 
     SetUPWindow();
-
+    
+    ActivateShader();
 }
 
 EmptyReturn WindowManager::WindowUtils::SetUPHints()
@@ -65,4 +67,8 @@ WindowManager::WindowUtils::~WindowUtils()
         glfwDestroyWindow(_window);
     }
     glfwTerminate();
+}
+EmptyReturn WindowManager::WindowUtils::ActivateShader()
+{
+    _shader.Activate();
 }
