@@ -27,6 +27,7 @@ Drawable::Button::Button(const Vect2D& leftCorner, const Vect2D& rightCorner)
     :IDrawable(leftCorner, rightCorner)
          {
             this->_vao.LinkVBO(this->_vbo, 0);
+            this->_vao.LinkEBO(_ebo);
          }
 void Drawable::Button::Draw()
 {

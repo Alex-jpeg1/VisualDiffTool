@@ -6,7 +6,7 @@
 class EBO
 {
     public:
-        EBO(std::vector<GLfloat> = {0,1,2,2,1,3});
+        EBO(std::vector<GLuint> = {0,1,2,2,1,3});
         ~EBO();
 
         [[ nodiscard ]] GLuint GetID() { return _ID; }

@@ -18,6 +18,14 @@ void VAO::LinkVBO(VBO& vbo, const GLuint& layout)
     
     this->Unbind();
 }
+void VAO::LinkEBO(EBO& ebo)
+{
+    this->Bind();
+
+    ebo.Bind();
+
+    this->Unbind();
+}
 void VAO::Bind()
 {
     glBindVertexArray(_ID);

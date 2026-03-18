@@ -20,9 +20,9 @@ namespace Drawable
         protected:
             std::vector<GLfloat> CalculatePositions();
             Vect2D _leftUpperCorner, _widthLength; 
-            EBO _ebo;
-            VBO _vbo;
             VAO _vao;
+            VBO _vbo;
+            EBO _ebo;
 
     };
     class Button: public IDrawable
