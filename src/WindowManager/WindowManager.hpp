@@ -1,6 +1,7 @@
 #pragma once
 #include "Shaders/Shaders.hpp"
 #include <GL/gl.h>
+
 #include <GLFW/glfw3.h>
 
 using WindowHeight = int;
@@ -27,5 +28,6 @@ namespace WindowManager
             GLFWwindow* _window;
             std::string _windowName;
             Shaders::ShadersUtils _shader;
+            glm::mat4 _projectionMatrix;
     };
 }

@@ -1,5 +1,7 @@
 #include "Shaders.hpp"
 #include <fstream>
+#include <glm/ext/vector_float4.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <stdexcept>
 
 //private api
@@ -73,13 +75,22 @@ void Shaders::ShadersUtils::Activate()
 {
     glUseProgram(_ID);
 }
-int Shaders::ShadersUtils::UploadMatrix(std::string MatrixName)
+int Shaders::ShadersUtils::UploadMatrix(std::string MatrixName, const glm::mat4& MatrixData)
 {
     int ID = glGetUniformLocation(_ID, MatrixName.c_str());
-    
+
+    glUniformMatrix4fv(ID, 1, GL_FALSE, glm::value_ptr(MatrixData));
+
     return ID;
 }
+int Shaders::ShadersUtils::UploadColorVector(std::string VectorName, const glm::vec4& VectorData)
+{
+    int ID = glGetUniformLocation(_ID, VectorName.c_str());
 
+    glUniform4fv(ID, 1, glm::value_ptr(VectorData));
+
+    return ID;
+}
 Shaders::ShadersUtils::~ShadersUtils()
 {
     Delete();

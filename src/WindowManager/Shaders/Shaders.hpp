@@ -1,7 +1,11 @@
 #pragma once
 
+#include <glm/ext/vector_float4.hpp>
 #include <string>
 #include "../../../extern/glad/glad.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace Shaders
 {
@@ -15,8 +19,8 @@ namespace Shaders
             void Activate();
             void Delete();
 
-            int UploadMatrix(std::string);
-
+            int UploadMatrix(std::string, const glm::mat4&);
+            int UploadColorVector(std::string, const glm::vec4&);
             ShadersUtils(const ShadersUtils&) = delete; //no constructor for copying
             void operator=(const ShadersUtils&) = delete; //no operator for copying
             //The purpose of this delete is to not have 2 instances of the same Shader

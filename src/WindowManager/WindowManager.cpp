@@ -13,7 +13,10 @@ WindowManager::WindowUtils::WindowUtils(WindowHeight windowHeight,
                                          _windowName{windowName},
                                          _shader{}
 {
+
     glfwInit();
+    _projectionMatrix = glm::ortho(0.0f, static_cast<float>(_windowWidth), static_cast<float>(_windowHeight), 0.0f, -1.0f, 1.0f);
+    
     SetUPHints();
 
     _window = glfwCreateWindow(_windowWidth, _windowHeight, _windowName.c_str(), monitor, share);
