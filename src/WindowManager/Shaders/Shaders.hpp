@@ -12,7 +12,10 @@ namespace Shaders
     class ShadersUtils final
     {
         public:
-            ShadersUtils(const std::string& = "ShadersInfo/default.vert", const std::string& = "ShadersInfo/default.frag");
+            ShadersUtils(){}
+            ShadersUtils(int,
+                        const std::string& = "/home/alex/Documents/VisualDiffTool/src/WindowManager/Shaders/ShaderInfo/default.vert", 
+                        const std::string& = "/home/alex/Documents/VisualDiffTool/src/WindowManager/Shaders/ShaderInfo/default.frag");
             
             [[ nodiscard ]] GLuint GetID() { return _ID; }
 
@@ -21,13 +24,6 @@ namespace Shaders
 
             int UploadMatrix(std::string, const glm::mat4&);
             int UploadColorVector(std::string, const glm::vec4&);
-            ShadersUtils(const ShadersUtils&) = delete; //no constructor for copying
-            void operator=(const ShadersUtils&) = delete; //no operator for copying
-            //The purpose of this delete is to not have 2 instances of the same Shader
-
-            ShadersUtils(ShadersUtils&&);
-            ShadersUtils& operator=(ShadersUtils&&);
-
 
             ~ShadersUtils();
         private:

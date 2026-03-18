@@ -1,7 +1,11 @@
 #include "../../extern/glad/glad.h"
+#include "Shaders/Shaders.hpp"
 #include "WindowManager.hpp"
 #include <GLFW/glfw3.h>
+#include <glm/ext/vector_float4.hpp>
 #include <stdexcept>
+
+constexpr int Reinitialize = 1;
 
 WindowManager::WindowUtils::WindowUtils(WindowHeight windowHeight, 
                                         WindowWidth windowWidth, 
@@ -10,11 +14,9 @@ WindowManager::WindowUtils::WindowUtils(WindowHeight windowHeight,
                                         GLFWwindow* share)
                                         :_windowHeight{windowHeight},
                                          _windowWidth{windowWidth},
-                                         _windowName{windowName},
-                                         _shader{}
+                                         _windowName{windowName}
 {
 
-    glfwInit();
     _projectionMatrix = glm::ortho(0.0f, static_cast<float>(_windowWidth), static_cast<float>(_windowHeight), 0.0f, -1.0f, 1.0f);
     
     SetUPHints();
@@ -27,8 +29,13 @@ WindowManager::WindowUtils::WindowUtils(WindowHeight windowHeight,
     }
 
     SetUPWindow();
-    
+
+    _shader = Shaders::ShadersUtils(Reinitialize);
     ActivateShader();
+    
+    glm::vec4 Color(1.0, 0.0, 0.0, 1.0);
+    _shader.UploadColorVector("u_Color", Color);
+    _shader.UploadMatrix("Projection", _projectionMatrix);
 }
 
 EmptyReturn WindowManager::WindowUtils::SetUPHints()
@@ -59,9 +66,7 @@ EmptyReturn WindowManager::WindowUtils::ColorWindowGray()
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    glfwSwapBuffers(_window);
 
-    glfwPollEvents();
 }
 WindowManager::WindowUtils::~WindowUtils()
 {
@@ -69,9 +74,13 @@ WindowManager::WindowUtils::~WindowUtils()
     {
         glfwDestroyWindow(_window);
     }
-    glfwTerminate();
 }
 EmptyReturn WindowManager::WindowUtils::ActivateShader()
 {
     _shader.Activate();
+}
+
+EmptyReturn WindowManager::WindowUtils::SwapBuffer()
+{
+    glfwSwapBuffers(_window);
 }

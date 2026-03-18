@@ -3,19 +3,34 @@
 #include "VBO/VBO.hpp"
 #include "VAO/VAO.hpp"
 #include "EBO/EBO.hpp"
+#include "Vect2D/Vect2D.hpp"
 
 
 
 namespace Drawable
 {
-    class Button
+    class IDrawable
     {
         public:
+            IDrawable(const Vect2D& leftCorner,const Vect2D& widthLength);
+            virtual void Draw() = 0;
 
-        private:
+            virtual ~IDrawable(){}
+
+        protected:
+            std::vector<GLfloat> CalculatePositions();
+            Vect2D _leftUpperCorner, _widthLength; 
             EBO _ebo;
             VBO _vbo;
             VAO _vao;
-            
+
+    };
+    class Button: public IDrawable
+    {
+        public:
+            explicit Button(const Vect2D&, const Vect2D&);
+            virtual void Draw() override;
+            virtual ~Button(){};
+        private:
     };
 }

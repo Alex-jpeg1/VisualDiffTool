@@ -41,7 +41,7 @@ void Shaders::ShadersUtils::CreateShader(GLuint& ID, const char *  shaderCode, i
 //public api
 
 
-Shaders::ShadersUtils::ShadersUtils(const std::string& vertexShader, const std::string& fragmentShader)
+Shaders::ShadersUtils::ShadersUtils(int aldoilea, const std::string& vertexShader, const std::string& fragmentShader)
     :_vertexShader{GetFileContent(vertexShader)},
      _fragmentShader{GetFileContent(fragmentShader)}
 {
