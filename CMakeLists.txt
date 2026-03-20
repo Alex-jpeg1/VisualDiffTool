@@ -80,17 +80,17 @@ add_library(GPUMemoryManager)
 
 target_sources(GPUMemoryManager
     PRIVATE
-        src/Button/EBO/EBO.cpp
-        src/Button/VBO/VBO.cpp
-        src/Button/VAO/VAO.cpp
+        src/Button/IDrawableFactory/Buttons/EBO/EBO.cpp
+        src/Button/IDrawableFactory/Buttons/VBO/VBO.cpp
+        src/Button/IDrawableFactory/Buttons/VAO/VAO.cpp
     PUBLIC
         FILE_SET HEADERS
         BASE_DIRS  
             src/Button
         FILES
-            src/Button/EBO/EBO.hpp
-            src/Button/VBO/VBO.hpp
-            src/Button/VAO/VAO.hpp
+            src/Button/IDrawableFactory/Buttons/EBO/EBO.hpp
+            src/Button/IDrawableFactory/Buttons/VBO/VBO.hpp
+            src/Button/IDrawableFactory/Buttons/VAO/VAO.hpp
 )
 
 add_library(Vect2DUtils)
@@ -111,13 +111,13 @@ add_library(Buttons)
 
 target_sources(Buttons
         PRIVATE
-            src/Button/Button.cpp
+            src/Button/IDrawableFactory/Buttons/Button.cpp
         PUBLIC
             FILE_SET HEADERS
             BASE_DIRS
                 src/Button
             FILES
-                src/Button/Button.hpp
+                src/Button/IDrawableFactory/Buttons/Button.hpp
 )
 
 target_link_libraries(Buttons PRIVATE GPUMemoryManager Vect2DUtils)

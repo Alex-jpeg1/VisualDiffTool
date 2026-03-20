@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../extern/glad/glad.h"
+#include "../../../../../extern/glad/glad.h"
 #include <vector>
 
 class EBO

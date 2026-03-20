@@ -1,4 +1,6 @@
-#include "Button.hpp"
+#pragma once
+
+#include "Buttons/Button.hpp"
 
 
 
@@ -11,7 +13,8 @@ namespace DrawableFactory
             Drawable::IDrawable* CreateButton(int, int, int, int );
 
         private:
-            bool checkBounds(int, int, int, int);
+            bool CheckBounds(int, int, int, int);
+            bool CheckValueBetween(int, int, int);
             int _maxWidth;
             int _maxHeight;
     };
