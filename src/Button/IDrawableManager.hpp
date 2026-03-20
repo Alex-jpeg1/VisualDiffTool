@@ -7,7 +7,7 @@
 class DrawableManager
 {
     public:
-        void AddButton(int, int, int, int, int); // xPosition, yPosition, width, height, color
+        int AddButton(int, int, int, int, int); // xPosition, yPosition, width, height, color
         //colors are hardcoded
         void DrawEverything();
     private:
