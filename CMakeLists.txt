@@ -120,8 +120,40 @@ target_sources(Buttons
                 src/Button/IDrawableFactory/Buttons/Button.hpp
 )
 
+add_library(IDrawableManager)
+
+target_sources(IDrawableManager
+            PRIVATE
+                src/Button/IDrawableFactory/IDrawableFactory.cpp
+            PUBLIC 
+                FILE_SET HEADERS
+                BASE_DIRS
+                    src/Button
+                FILES
+                    src/Button/IDrawableFactory/IDrawableFactory.hpp
+)
+
+
+
 target_link_libraries(Buttons PRIVATE GPUMemoryManager Vect2DUtils)
 
-target_link_libraries(WindowApp PRIVATE WindowManager Buttons)
+target_link_libraries(IDrawableManager PRIVATE Buttons)
+
+add_library(DrawablesProvider)
+
+target_sources(DrawablesProvider
+                PRIVATE
+                    src/Button/IDrawableManager.cpp
+                PUBLIC
+                    FILE_SET HEADERS
+                    BASE_DIRS
+                        src/Button
+                    FILES
+                        src/Button/IDrawableManager.hpp
+)
+
+target_link_libraries(DrawablesProvider PRIVATE IDrawableManager)
+
+target_link_libraries(WindowApp PRIVATE WindowManager DrawablesProvider)
 
 target_link_libraries(VisualDiffTool PRIVATE WindowApp)

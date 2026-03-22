@@ -7,6 +7,7 @@
 class DrawableManager
 {
     public:
+        DrawableManager(int width, int height):_drawableFactory(width, height){}
         int AddButton(int, int, int, int, int); // xPosition, yPosition, width, height, color
         //colors are hardcoded
         void DrawEverything();

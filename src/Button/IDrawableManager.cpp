@@ -18,3 +18,11 @@ int DrawableManager::AddButton(int xPosition, int yPosition, int width, int heig
     this->_components.push_back(currentButton);
     return 0;
 }
+
+void DrawableManager::DrawEverything()
+{
+    for(std::shared_ptr<Drawable::IDrawable>& curr: this->_components)
+    {
+        curr->Draw();
+    }
+}
