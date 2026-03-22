@@ -7,6 +7,7 @@ int main()
 {
     glfwInit();
         MainWindow::WindowApp::GetInstance(800, 800).Init(800, 800, "Fereastra mea");
+        MainWindow::WindowApp::GetInstance(800, 800).PositionButtons();
         MainWindow::WindowApp::GetInstance(800, 800).Run();
     glfwTerminate();
 

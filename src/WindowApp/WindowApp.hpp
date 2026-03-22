@@ -29,6 +29,8 @@ namespace MainWindow
         
         void Run();
 
+        void PositionButtons();
+
         private:
         WindowApp(int, int):_componentsManager(MaxWidth, MaxHeight){}
 

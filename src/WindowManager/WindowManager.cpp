@@ -33,7 +33,7 @@ WindowManager::WindowUtils::WindowUtils(WindowHeight windowHeight,
     _shader = Shaders::ShadersUtils(Reinitialize);
     ActivateShader();
     
-    glm::vec4 Color(1.0, 0.0, 0.0, 1.0);
+    glm::vec4 Color(0.0, 1.0, 0.0, 1.0);
     _shader.UploadColorVector("u_Color", Color);
     _shader.UploadMatrix("Projection", _projectionMatrix);
 }
