@@ -5,15 +5,7 @@
 #include "EBO/EBO.hpp"
 #include "../../Vect2D/Vect2D.hpp"
 
-class Colors
-{
-    public:
-        static Colors RED(int);
-        static Colors GREEN(int);
-        static Colors BLUE(int);
-    private:
-        explicit Colors(int, int, int);  
-};
+
 
 namespace Drawable
 {
