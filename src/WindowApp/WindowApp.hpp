@@ -2,7 +2,8 @@
 
 #include "../WindowManager/WindowManager.hpp"
 #include <memory>
-#include "../Button/IDrawableManager.hpp"
+#include "/home/alex/Documents/VisualDiffTool/src/Button/IDrawableManager.hpp"
+#include "Shaders/Shaders.hpp"
 
 namespace MainWindow
 {
@@ -42,5 +43,6 @@ namespace MainWindow
 
         DrawableManager _componentsManager;
         std::unique_ptr<WindowManager::WindowUtils> _window;
+        Shaders::ShadersUtils _shader;
     };
 }

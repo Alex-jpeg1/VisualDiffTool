@@ -1,7 +1,5 @@
-#include "../../extern/glad/glad.h"
-#include "Shaders/Shaders.hpp"
 #include "WindowManager.hpp"
-#include <GLFW/glfw3.h>
+#include <glm/gtc/matrix_transform.hpp>
 #include <glm/ext/vector_float4.hpp>
 #include <stdexcept>
 
@@ -29,13 +27,6 @@ WindowManager::WindowUtils::WindowUtils(WindowHeight windowHeight,
     }
 
     SetUPWindow();
-
-    _shader = Shaders::ShadersUtils(Reinitialize);
-    ActivateShader();
-    
-    glm::vec4 Color(0.0, 1.0, 0.0, 1.0);
-    _shader.UploadColorVector("u_Color", Color);
-    _shader.UploadMatrix("Projection", _projectionMatrix);
 }
 
 EmptyReturn WindowManager::WindowUtils::SetUPHints()
@@ -74,10 +65,6 @@ WindowManager::WindowUtils::~WindowUtils()
     {
         glfwDestroyWindow(_window);
     }
-}
-EmptyReturn WindowManager::WindowUtils::ActivateShader()
-{
-    _shader.Activate();
 }
 
 EmptyReturn WindowManager::WindowUtils::SwapBuffer()

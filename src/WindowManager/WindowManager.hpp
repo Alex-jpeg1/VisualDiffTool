@@ -1,9 +1,9 @@
 #pragma once
-#include "Shaders/Shaders.hpp"
+#include <glm/glm.hpp>
+#include "../../extern/glad/glad.h"
 #include <GL/gl.h>
-
 #include <GLFW/glfw3.h>
-
+#include <string>
 using WindowHeight = int;
 using WindowWidth = int;
 using EmptyReturn = void;
@@ -22,13 +22,12 @@ namespace WindowManager
         private:
             EmptyReturn SetUPWindow();
             EmptyReturn SetUPHints(); // default hints
-            EmptyReturn ActivateShader();
 
             WindowHeight _windowHeight;
             WindowWidth _windowWidth;
             GLFWwindow* _window;
             std::string _windowName;
-            Shaders::ShadersUtils _shader;
+            //Shaders::ShadersUtils _shader;
             glm::mat4 _projectionMatrix;
     };
 }

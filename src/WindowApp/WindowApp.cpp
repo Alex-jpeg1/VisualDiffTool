@@ -22,7 +22,7 @@ void MainWindow::WindowApp::Run()
     while(_window->WindowActive())
     {
         _window->ColorWindowGray();
-        _componentsManager.DrawEverything();
+        _componentsManager.DrawEverything(_shader);
 
         _window->SwapBuffer();
         glfwPollEvents();

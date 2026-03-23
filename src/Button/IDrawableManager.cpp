@@ -19,10 +19,10 @@ int DrawableManager::AddButton(int xPosition, int yPosition, int width, int heig
     return 0;
 }
 
-void DrawableManager::DrawEverything()
+void DrawableManager::DrawEverything(Shaders::ShadersUtils& shader)
 {
     for(std::shared_ptr<Drawable::IDrawable>& curr: this->_components)
     {
-        curr->Draw();
+        curr->Draw(shader);
     }
 }

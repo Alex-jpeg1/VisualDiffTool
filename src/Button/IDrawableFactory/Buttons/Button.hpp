@@ -4,8 +4,8 @@
 #include "VAO/VAO.hpp"
 #include "EBO/EBO.hpp"
 #include "../../Vect2D/Vect2D.hpp"
-
-
+#include "/home/alex/Documents/VisualDiffTool/src/WindowApp/Shaders/Shaders.hpp"
+#include "ButtonColors/ButtonColors.hpp"
 
 namespace Drawable
 {
@@ -13,7 +13,7 @@ namespace Drawable
     {
         public:
             IDrawable(const Vect2D& leftCorner,const Vect2D& widthLength);
-            virtual void Draw() = 0;
+            virtual void Draw(Shaders::ShadersUtils&) = 0;
 
             virtual ~IDrawable(){}
 
@@ -29,8 +29,9 @@ namespace Drawable
     {
         public:
             explicit Button(const Vect2D&, const Vect2D&);
-            virtual void Draw() override;
+            virtual void Draw(Shaders::ShadersUtils&) override;
             virtual ~Button(){};
         private:
+            Colors _color;
     };
 }

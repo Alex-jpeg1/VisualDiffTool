@@ -29,9 +29,10 @@ Drawable::Button::Button(const Vect2D& leftCorner, const Vect2D& rightCorner)
             this->_vao.LinkVBO(this->_vbo, 0);
             this->_vao.LinkEBO(_ebo);
          }
-void Drawable::Button::Draw()
+void Drawable::Button::Draw(Shaders::ShadersUtils& shader)
 {
     _vao.Bind();
+    shader.UploadColorVector("u_Color", _color.getColor());
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     _vao.Unbind();
 }
