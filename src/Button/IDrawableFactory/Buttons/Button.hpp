@@ -14,7 +14,7 @@ namespace Drawable
         public:
             IDrawable(const Vect2D& leftCorner,const Vect2D& widthLength);
             virtual void Draw(Shaders::ShadersUtils&) = 0;
-
+            virtual void OnHover(int x, int y) = 0;
             virtual ~IDrawable(){}
 
         protected:

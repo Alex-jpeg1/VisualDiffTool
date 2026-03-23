@@ -28,6 +28,5 @@ namespace WindowManager
             GLFWwindow* _window;
             std::string _windowName;
             //Shaders::ShadersUtils _shader;
-            glm::mat4 _projectionMatrix;
     };
 }

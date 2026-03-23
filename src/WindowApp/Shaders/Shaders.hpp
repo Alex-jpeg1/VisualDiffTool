@@ -14,8 +14,8 @@ namespace Shaders
         public:
             ShadersUtils(){}
             ShadersUtils(int,
-                        const std::string& = "/home/alex/Documents/VisualDiffTool/src/WindowManager/Shaders/ShaderInfo/default.vert", 
-                        const std::string& = "/home/alex/Documents/VisualDiffTool/src/WindowManager/Shaders/ShaderInfo/default.frag");
+                        const std::string& = "/home/alex/Documents/VisualDiffTool/src/WindowApp/Shaders/ShaderInfo/default.vert", 
+                        const std::string& = "/home/alex/Documents/VisualDiffTool/src/WindowApp/Shaders/ShaderInfo/default.frag");
             
             [[ nodiscard ]] GLuint GetID() { return _ID; }
 

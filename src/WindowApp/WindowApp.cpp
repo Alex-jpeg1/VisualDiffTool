@@ -1,6 +1,7 @@
 #include "WindowApp.hpp"
+#include "Shaders/Shaders.hpp"
 #include <memory>
-
+#include <glm/gtc/matrix_transform.hpp>
 
 void MainWindow::WindowApp::Init(WindowWidth width, WindowHeight height, const std::string& name)
 {
@@ -15,6 +16,13 @@ void MainWindow::WindowApp::PositionButtons()
 {
     _componentsManager.AddButton(200, 200, 200, 200, 0);
     _componentsManager.AddButton(400, 400, 200, 200, 0);
+    
+    _shader = Shaders::ShadersUtils(1);
+
+    _shader.Activate();
+    glm::mat4 _projectionMatrix = glm::ortho(0.0f, static_cast<float>(MaxWidth), static_cast<float>(MaxHeight), 0.0f, -1.0f, 1.0f);
+
+    _shader.UploadMatrix("Projection", _projectionMatrix);
 }
 
 void MainWindow::WindowApp::Run()

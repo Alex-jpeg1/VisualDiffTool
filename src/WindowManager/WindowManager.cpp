@@ -1,6 +1,5 @@
 #include "WindowManager.hpp"
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/ext/vector_float4.hpp>
+
 #include <stdexcept>
 
 constexpr int Reinitialize = 1;
@@ -15,7 +14,6 @@ WindowManager::WindowUtils::WindowUtils(WindowHeight windowHeight,
                                          _windowName{windowName}
 {
 
-    _projectionMatrix = glm::ortho(0.0f, static_cast<float>(_windowWidth), static_cast<float>(_windowHeight), 0.0f, -1.0f, 1.0f);
     
     SetUPHints();
 

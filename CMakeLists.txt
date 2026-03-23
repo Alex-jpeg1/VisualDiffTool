@@ -31,14 +31,14 @@ add_library(ShaderManager)
 
 target_sources(ShaderManager
     PRIVATE 
-        src/WindowManager/Shaders/Shaders.cpp
+        src/WindowApp/Shaders/Shaders.cpp
     PUBLIC
         FILE_SET HEADERS
 
         BASE_DIRS
-            src/WindowManager
+            src/WindowApp
         FILES 
-            src/WindowManager/Shaders/Shaders.hpp
+            src/WindowApp/Shaders/Shaders.hpp
 )
 
 add_library(WindowManager)
@@ -60,7 +60,6 @@ target_link_libraries(WindowManager
         Glad
         glfw
         OpenGL::GL
-        ShaderManager            
     )
 
 add_library(WindowApp)
@@ -107,6 +106,33 @@ target_sources(Vect2DUtils
             src/Button/Vect2D/Vect2D.hpp
 )
 
+add_library(ColorWrapper)
+target_sources(ColorWrapper
+    PRIVATE 
+        src/Button/IDrawableFactory/Buttons/ButtonColors/ColorValueWrapper/ColorValueWrapper.cpp
+    PUBLIC
+        FILE_SET HEADERS
+        BASE_DIRS
+            src/Button
+        FILES
+            src/Button/IDrawableFactory/Buttons/ButtonColors/ColorValueWrapper/ColorValueWrapper.hpp
+)
+
+
+add_library(Colors)
+
+target_sources(Colors
+    PRIVATE
+        src/Button/IDrawableFactory/Buttons/ButtonColors/ButtonColors.cpp
+    PUBLIC
+        FILE_SET HEADERS
+        BASE_DIRS
+            src/Button
+        FILES
+            src/Button/IDrawableFactory/Buttons/ButtonColors/ButtonColors.hpp
+)
+target_link_libraries(Colors PRIVATE ColorWrapper)
+
 add_library(Buttons)
 
 target_sources(Buttons
@@ -119,6 +145,8 @@ target_sources(Buttons
             FILES
                 src/Button/IDrawableFactory/Buttons/Button.hpp
 )
+
+target_link_libraries(Buttons PRIVATE Colors)
 
 add_library(IDrawableManager)
 
@@ -135,7 +163,7 @@ target_sources(IDrawableManager
 
 
 
-target_link_libraries(Buttons PRIVATE GPUMemoryManager Vect2DUtils)
+target_link_libraries(Buttons PRIVATE GPUMemoryManager Vect2DUtils ShaderManager)
 
 target_link_libraries(IDrawableManager PRIVATE Buttons)
 
@@ -154,6 +182,6 @@ target_sources(DrawablesProvider
 
 target_link_libraries(DrawablesProvider PRIVATE IDrawableManager)
 
-target_link_libraries(WindowApp PRIVATE WindowManager DrawablesProvider)
+target_link_libraries(WindowApp PRIVATE WindowManager DrawablesProvider ShaderManager)
 
 target_link_libraries(VisualDiffTool PRIVATE WindowApp)
