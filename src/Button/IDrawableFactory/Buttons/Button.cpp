@@ -1,4 +1,5 @@
 #include "Button.hpp"
+#include "ButtonColors/ColorValueWrapper/ColorValueWrapper.hpp"
 #include "VBO/VBO.hpp"
 #include "../../Vect2D/Vect2D.hpp"
 
@@ -23,6 +24,19 @@ std::vector<GLfloat> Drawable::IDrawable::CalculatePositions()
         x + w, y + h  
     };
 }
+
+bool Drawable::IDrawable::Inside(int x, int y)
+{
+    if( x >= _leftUpperCorner.GetX() && x <= _leftUpperCorner.GetX() + _widthLength.GetX())
+    {
+        if(y >= _leftUpperCorner.GetY() && y<= _leftUpperCorner.GetY() + _widthLength.GetY())
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 Drawable::Button::Button(const Vect2D& leftCorner, const Vect2D& rightCorner)
     :IDrawable(leftCorner, rightCorner)
          {
@@ -36,4 +50,14 @@ void Drawable::Button::Draw(Shaders::ShadersUtils& shader)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     _vao.Unbind();
 }
-
+void Drawable::Button::OnHover(int x, int y)
+{
+    if(Inside(x, y))
+    {
+        _color.ChangeColor(ColorValueWrapper(0), ColorValueWrapper(1), ColorValueWrapper(0), ColorValueWrapper(1));
+    }
+    else 
+    {
+        _color.ChangeColor(ColorValueWrapper(1), ColorValueWrapper(0), ColorValueWrapper(0), ColorValueWrapper(1));   
+    }
+}

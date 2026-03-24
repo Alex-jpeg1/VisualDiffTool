@@ -26,3 +26,10 @@ void DrawableManager::DrawEverything(Shaders::ShadersUtils& shader)
         curr->Draw(shader);
     }
 }
+void DrawableManager::CheckHover(int x, int y)
+{
+    for(std::shared_ptr<Drawable::IDrawable>& curr: this->_components)
+    {
+        curr->OnHover(x,y);
+    }
+}

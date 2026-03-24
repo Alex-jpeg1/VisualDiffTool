@@ -19,6 +19,11 @@ namespace WindowManager
             EmptyReturn ColorWindowGray();
             bool WindowActive(){return !glfwWindowShouldClose(_window);}
             void SwapBuffer();
+
+            operator GLFWwindow*() const
+            {
+                return _window;
+            }
         private:
             EmptyReturn SetUPWindow();
             EmptyReturn SetUPHints(); // default hints

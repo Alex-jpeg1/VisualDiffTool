@@ -180,8 +180,21 @@ target_sources(DrawablesProvider
                         src/Button/IDrawableManager.hpp
 )
 
+add_library(Inputs)
+
+target_sources(Inputs
+    PRIVATE
+        src/WindowApp/Inputs/Inputs.cpp
+    PUBLIC
+        FILE_SET HEADERS
+    BASE_DIRS
+        src/WindowApp
+    FILES
+        src/WindowApp/Inputs/Inputs.hpp
+)
+
 target_link_libraries(DrawablesProvider PRIVATE IDrawableManager)
 
-target_link_libraries(WindowApp PRIVATE WindowManager DrawablesProvider ShaderManager)
+target_link_libraries(WindowApp PRIVATE WindowManager DrawablesProvider ShaderManager Inputs)
 
 target_link_libraries(VisualDiffTool PRIVATE WindowApp)

@@ -14,6 +14,7 @@ void MainWindow::WindowApp::Init(WindowWidth width, WindowHeight height, const s
 
 void MainWindow::WindowApp::PositionButtons()
 {
+    _mouseInputManager.Start_Callback(*_window);
     _componentsManager.AddButton(200, 200, 200, 200, 0);
     _componentsManager.AddButton(400, 400, 200, 200, 0);
     
@@ -29,7 +30,13 @@ void MainWindow::WindowApp::Run()
 {
     while(_window->WindowActive())
     {
+        _mouseInputManager.Get_Data(_xPos, _yPos);
+
+        
         _window->ColorWindowGray();
+        
+        _componentsManager.CheckHover(_xPos, _yPos);
+        
         _componentsManager.DrawEverything(_shader);
 
         _window->SwapBuffer();

@@ -4,6 +4,7 @@
 #include <memory>
 #include "/home/alex/Documents/VisualDiffTool/src/Button/IDrawableManager.hpp"
 #include "Shaders/Shaders.hpp"
+#include "Inputs/Inputs.hpp"
 
 namespace MainWindow
 {
@@ -41,8 +42,11 @@ namespace MainWindow
         static int MaxWidth;
         static int MaxHeight;
 
+        int _xPos;
+        int _yPos;
         DrawableManager _componentsManager;
         std::unique_ptr<WindowManager::WindowUtils> _window;
         Shaders::ShadersUtils _shader;
+        MouseInputManager _mouseInputManager;
     };
 }

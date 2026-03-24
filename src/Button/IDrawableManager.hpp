@@ -10,7 +10,9 @@ class DrawableManager
         DrawableManager(int width, int height):_drawableFactory(width, height){}
         int AddButton(int, int, int, int, int); // xPosition, yPosition, width, height, color
         //colors are hardcoded
-        void DrawEverything(Shaders::ShadersUtils& );
+        void DrawEverything(Shaders::ShadersUtils&);
+
+        void CheckHover(int x, int y);
     private:
         std::list<std::shared_ptr<Drawable::IDrawable>> _components;
         DrawableFactory::IDrawableFactory _drawableFactory;
