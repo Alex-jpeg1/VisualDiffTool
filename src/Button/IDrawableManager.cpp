@@ -1,5 +1,7 @@
 #include "IDrawableManager.hpp"
+#include "IDrawableFactory/Buttons/Button.hpp"
 #include <exception>
+#include <future>
 #include <memory>
 #include <iostream>
 
@@ -31,5 +33,12 @@ void DrawableManager::CheckHover(int x, int y)
     for(std::shared_ptr<Drawable::IDrawable>& curr: this->_components)
     {
         curr->OnHover(x,y);
+    }
+}
+void DrawableManager::CheckClick(int x, int y)
+{
+    for(std::shared_ptr<Drawable::IDrawable>& curr: this->_components)
+    {
+        curr->OnClick(x, y);
     }
 }

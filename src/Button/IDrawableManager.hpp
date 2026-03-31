@@ -13,6 +13,7 @@ class DrawableManager
         void DrawEverything(Shaders::ShadersUtils&);
 
         void CheckHover(int x, int y);
+        void CheckClick(int x, int y);
     private:
         std::list<std::shared_ptr<Drawable::IDrawable>> _components;
         DrawableFactory::IDrawableFactory _drawableFactory;

@@ -30,13 +30,21 @@ void MainWindow::WindowApp::Run()
 {
     while(_window->WindowActive())
     {
-        _mouseInputManager.Get_Data_Hover(_xPos, _yPos);
+        _mouseInputManager.Get_Data_Hover(_xPosHover, _yPosHover);
 
         
         _window->ColorWindowGray();
         
-        _componentsManager.CheckHover(_xPos, _yPos);
-        
+        _componentsManager.CheckHover(_xPosHover, _yPosHover);
+
+
+        bool mouseClick = _mouseInputManager.Get_Data_Click(_xPosClick, _yPosClick);
+
+        if(mouseClick)
+        {
+            _componentsManager.CheckClick(_xPosClick, _yPosClick);
+            _mouseInputManager.ClickSolved();
+        }
         _componentsManager.DrawEverything(_shader);
 
         _window->SwapBuffer();

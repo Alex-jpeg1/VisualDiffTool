@@ -2,6 +2,7 @@
 #include "ButtonColors/ColorValueWrapper/ColorValueWrapper.hpp"
 #include "VBO/VBO.hpp"
 #include "../../Vect2D/Vect2D.hpp"
+#include <iostream>
 
 Drawable::IDrawable::IDrawable(const Vect2D& leftCorner, const Vect2D& widthLength)
         :_leftUpperCorner{leftCorner},
@@ -66,6 +67,6 @@ void Drawable::Button::OnClick(int x, int y)
 {
     if(Inside(x, y))
     {
-        
+        std::cout<<"Clicked a button\n";
     }
 }

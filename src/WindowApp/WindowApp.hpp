@@ -42,8 +42,11 @@ namespace MainWindow
         static int MaxWidth;
         static int MaxHeight;
 
-        int _xPos;
-        int _yPos;
+        int _xPosHover;
+        int _yPosHover;
+
+        int _xPosClick;
+        int _yPosClick;
         DrawableManager _componentsManager;
         std::unique_ptr<WindowManager::WindowUtils> _window;
         Shaders::ShadersUtils _shader;
