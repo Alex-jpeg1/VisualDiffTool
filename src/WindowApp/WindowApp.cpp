@@ -30,7 +30,7 @@ void MainWindow::WindowApp::Run()
 {
     while(_window->WindowActive())
     {
-        _mouseInputManager.Get_Data(_xPos, _yPos);
+        _mouseInputManager.Get_Data_Hover(_xPos, _yPos);
 
         
         _window->ColorWindowGray();

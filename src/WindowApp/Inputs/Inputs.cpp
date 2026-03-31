@@ -10,10 +10,10 @@ void MouseInputManager::Start_Callback(GLFWwindow* window)
     glfwSetCursorPosCallback(window, Static_mouse_callback);
 }
 
-void MouseInputManager::Get_Data(int& xPos, int& yPos)
+void MouseInputManager::Get_Data_Hover(int& xPos, int& yPos)
 {
-    xPos = _xVal;
-    yPos = _yVal;
+    xPos = _xValHover;
+    yPos = _yValHover;
 }
 
 //private API
@@ -23,12 +23,12 @@ void MouseInputManager::Static_mouse_callback(GLFWwindow* window, double xPos, d
 
     if(instance)
     {
-        instance->Handle_inputs(xPos, yPos);
+        instance->Handle_inputs_hover(xPos, yPos);
     }
 }
 
-void MouseInputManager::Handle_inputs(double xPos, double yPos)
+void MouseInputManager::Handle_inputs_hover(double xPos, double yPos)
 {
-    _xVal = xPos;
-    _yVal = yPos;
+    _xValHover = xPos;
+    _yValHover = yPos;
 }

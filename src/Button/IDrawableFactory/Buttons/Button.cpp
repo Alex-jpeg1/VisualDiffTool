@@ -61,3 +61,11 @@ void Drawable::Button::OnHover(int x, int y)
         _color.ChangeColor(ColorValueWrapper(1), ColorValueWrapper(0), ColorValueWrapper(0), ColorValueWrapper(1));   
     }
 }
+
+void Drawable::Button::OnClick(int x, int y)
+{
+    if(Inside(x, y))
+    {
+        
+    }
+}

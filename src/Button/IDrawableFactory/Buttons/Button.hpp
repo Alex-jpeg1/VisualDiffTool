@@ -15,7 +15,7 @@ namespace Drawable
             IDrawable(const Vect2D& leftCorner,const Vect2D& widthLength);
             virtual void Draw(Shaders::ShadersUtils&) = 0;
             virtual void OnHover(int x, int y) = 0;
-
+            virtual void OnClick(int x, int y) = 0;
             virtual ~IDrawable(){}
             
         protected:
@@ -33,8 +33,12 @@ namespace Drawable
             explicit Button(const Vect2D&, const Vect2D&);
             virtual void Draw(Shaders::ShadersUtils&) override;
             virtual void OnHover(int, int) override;
+            virtual void OnClick(int, int) override;
+
             virtual ~Button(){};
         private:
+            void OpenFileExplorer();
+            int _ID;
             Colors _color;
     };
 }
